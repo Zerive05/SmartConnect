@@ -21,11 +21,12 @@ git pull origin main
 
 # Menginstal dependensi baru (seperti axios dan csv-parser)
 npm install
-
+```
 ---
 
 ## 🗄️ Langkah 2: Inisialisasi Database (MySQL / XAMPP)
 Opsi A: Menggunakan MySQL WorkbenchMasuk ke Local Instance MySQL Workbench milikmu.Eksekusi skrip SQL di bawah ini untuk membuat database dan tabel:SQLCREATE DATABASE IF NOT EXISTS smartconnect_crm;
+```bash
 USE smartconnect_crm;
 
 CREATE TABLE IF NOT EXISTS customers (
@@ -49,26 +50,31 @@ CREATE TABLE IF NOT EXISTS ai_training_dataset (
     text TEXT NOT NULL,
     label VARCHAR(20) NOT NULL
 );
-
+```
 Opsi B: Menggunakan phpMyAdmin (XAMPP)Aktifkan modul MySQL pada XAMPP Control Panel.Buka browser, akses http://localhost/phpmyadmin/.Klik tab SQL, tempel skrip pembuatan database di atas, lalu klik Go.
 
 ---
 
 ## 🔑 Langkah 3: Konfigurasi Environment (.env)
-Buat file bernama .env secara manual di root folder proyek, lalu sesuaikan isinya:Pengguna MySQL Workbench:Cuplikan kode    PORT=5000
+Buat file bernama .env secara manual di root folder proyek, lalu sesuaikan isinya:
+Pengguna MySQL Workbench:
+```bash
+Cuplikan kode    
+    PORT=5000
     DB_HOST=localhost
     DB_USER=root
     DB_PASSWORD=ISI_PASSWORD_WORKBENCH_KAMU
     DB_NAME=smartconnect_crm
-    ```
-*   **Pengguna XAMPP (Default tanpa password):**
-```env
+```
+Pengguna XAMPP (Default tanpa password):
+```bash
+Cuplikan kode
     PORT=5000
     DB_HOST=localhost
     DB_USER=root
     DB_PASSWORD=
     DB_NAME=smartconnect_crm
-    ```
+```
 
 ---
 
@@ -76,4 +82,5 @@ Buat file bernama .env secara manual di root folder proyek, lalu sesuaikan isiny
 1. Jalankan perintah berikut di terminal:
 ```bash
    node index.js
+```
 Jika muncul QR Code di terminal, buka WhatsApp HP-mu $\rightarrow$ Perangkat Tautan $\rightarrow$ Tautkan Perangkat, lalu pindai QR tersebut.Setelah berhasil terhubung, terminal akan mencetak log: [CRM] Selamat Zerive, WhatsApp Gateway Berhasil Terhubung!.🧪 Langkah 5: Skenario Pengujian Alur Kerja (Testing)Ambil HP lain, lakukan simulasi pengiriman pesan ke nomor gateway untuk menguji integrasi hibrida otomasi:Uji Kasus Inquiry: Kirim chat "Apakah ada promo?" $\rightarrow$ Sistem mencatat log kategori Inquiry dan mengirimkan balasan informasi umum secara otomatis.Uji Kasus Complaint: Kirim chat "Aplikasi sering keluar sendiri" $\rightarrow$ Sistem mencatat log kategori Complaint, mengklasifikasikannya ke tabel messages, dan bot memberikan pesan mitigasi komplain.Uji Kasus Transaction: Kirim chat "Saya mau konfirmasi bukti transfer" $\rightarrow$ Sistem mencatat log kategori Transaction dan bot memberikan balasan konfirmasi validasi finansial.
