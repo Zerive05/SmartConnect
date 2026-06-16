@@ -22,7 +22,10 @@ git pull origin main
 # Menginstal dependensi baru (seperti axios dan csv-parser)
 npm install
 
-## 🗄️ Langkah 2: Inisialisasi Database (MySQL / XAMPP)Opsi A: Menggunakan MySQL WorkbenchMasuk ke Local Instance MySQL Workbench milikmu.Eksekusi skrip SQL di bawah ini untuk membuat database dan tabel:SQLCREATE DATABASE IF NOT EXISTS smartconnect_crm;
+---
+
+## 🗄️ Langkah 2: Inisialisasi Database (MySQL / XAMPP)
+Opsi A: Menggunakan MySQL WorkbenchMasuk ke Local Instance MySQL Workbench milikmu.Eksekusi skrip SQL di bawah ini untuk membuat database dan tabel:SQLCREATE DATABASE IF NOT EXISTS smartconnect_crm;
 USE smartconnect_crm;
 
 CREATE TABLE IF NOT EXISTS customers (
@@ -46,8 +49,13 @@ CREATE TABLE IF NOT EXISTS ai_training_dataset (
     text TEXT NOT NULL,
     label VARCHAR(20) NOT NULL
 );
+
 Opsi B: Menggunakan phpMyAdmin (XAMPP)Aktifkan modul MySQL pada XAMPP Control Panel.Buka browser, akses http://localhost/phpmyadmin/.Klik tab SQL, tempel skrip pembuatan database di atas, lalu klik Go.
-## 🔑 Langkah 3: Konfigurasi Environment (.env)Buat file bernama .env secara manual di root folder proyek, lalu sesuaikan isinya:Pengguna MySQL Workbench:Cuplikan kode    PORT=5000
+
+---
+
+## 🔑 Langkah 3: Konfigurasi Environment (.env)
+Buat file bernama .env secara manual di root folder proyek, lalu sesuaikan isinya:Pengguna MySQL Workbench:Cuplikan kode    PORT=5000
     DB_HOST=localhost
     DB_USER=root
     DB_PASSWORD=ISI_PASSWORD_WORKBENCH_KAMU
